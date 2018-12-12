@@ -30,31 +30,6 @@ import wave
 
 # In[13]:
 
-
-counter = 0
-for imgtrain in glob.glob('/Users/Administrator/Documents/Machine Learning/CNN/CatsDogs/TrainingSet/Cat/*.jpg'):    # You can check number of data in each labelled folder. Here we are
-    cv_imgtrain = cv2.imread(imgtrain)                              # doing it for '2' label
-    counter += 1
-print ("total images in the folder = ", counter)
-#Calculate shape of train
-cv_imgtrain.shape     #shape of kaggle MNIST data base is 28,28,3
-
-
-# In[14]:
-
-
-counter = 0
-for imgtest in glob.glob('/Users/Administrator/Documents/Machine Learning/CNN/CatsDogs/TestingSet/cats/*.jpg'):
-    cv_imgtest = cv2.imread(imgtest)
-    counter += 1
-print ("total images in the folder = ", counter)
-#Calculate shape of train
-cv_imgtest.shape       #shape of kaggle MNIST data base is 28,28,3
-
-
-# In[15]:
-
-
 img_width, img_height = 200, 200
 
 
@@ -245,13 +220,4 @@ else:
 
 
 # In[9]:
-
-
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-#img=mpimg.imread('/Users/Administrator/Documents/Machine Learning/one.jpg',1)
-img = mpimg.imread('/Users/Administrator/Documents/Machine Learning/CNN/Tamil Dataset/A.png',-1)
-img1 = cv2.resize(img, (200,200))
-imgplot = plt.imshow(img1)
-plt.show()
 
