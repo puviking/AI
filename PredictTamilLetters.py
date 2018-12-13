@@ -217,7 +217,3 @@ else:
     stream.stop_stream()  
     stream.close()  
     p.terminate()
-
-
-# In[9]:
-
