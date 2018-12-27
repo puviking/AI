@@ -70,7 +70,7 @@ cleaned = array(cleaned)
 # In[68]:
 
 
-dump(cleaned, open('/Users/Administrator/Documents/Machine Learning/RNN/fra-eng/english-tamil.pkl', 'wb'))
+dump(cleaned, open('/Users/Administrator/Documents/Machine Learning/RNN/tamil-eng/english-tamil.pkl', 'wb'))
 
 
 # # Split Text
@@ -78,7 +78,7 @@ dump(cleaned, open('/Users/Administrator/Documents/Machine Learning/RNN/fra-eng/
 # In[110]:
 
 
-raw_dataset = load(open('/Users/Administrator/Documents/Machine Learning/RNN/fra-eng/english-tamil.pkl', 'rb'))
+raw_dataset = load(open('/Users/Administrator/Documents/Machine Learning/RNN/tamil-eng/english-tamil.pkl', 'rb'))
 n_sentences = 10000
 dataset = raw_dataset[:n_sentences, :]
 shuffle(dataset)
@@ -88,9 +88,9 @@ train, test = dataset[:9000], dataset[9000:]
 # In[70]:
 
 
-dump(dataset, open('/Users/Administrator/Documents/Machine Learning/RNN/fra-eng/english-tamil-both.pkl', 'wb'))
-dump(train, open('/Users/Administrator/Documents/Machine Learning/RNN/fra-eng/english-tamil-train.pkl', 'wb'))
-dump(test, open('/Users/Administrator/Documents/Machine Learning/RNN/fra-eng/english-tamil-test.pkl', 'wb'))
+dump(dataset, open('/Users/Administrator/Documents/Machine Learning/RNN/tamil-eng/english-tamil-both.pkl', 'wb'))
+dump(train, open('/Users/Administrator/Documents/Machine Learning/RNN/tamil-eng/english-tamil-train.pkl', 'wb'))
+dump(test, open('/Users/Administrator/Documents/Machine Learning/RNN/tamil-eng/english-tamil-test.pkl', 'wb'))
 
 
 # # Train Neural Translation Model
@@ -109,8 +109,8 @@ tamiltokenizer = Tokenizer()
 tamiltokenizer.fit_on_texts(dataset[:,1])
 tamil_vocab_size = len(tamiltokenizer.word_index) + 1
 tamil_length=max(len(line.split()) for line in dataset[:, 0])
-print('French Vocab size:', tamil_vocab_size)
-print('French Max Length:', tamil_length)
+print('Tamil Vocab size:', tamil_vocab_size)
+print('Tamil Max Length:', tamil_length)
 
 
 # In[158]:
@@ -128,7 +128,7 @@ for i in trainy:
     encoded = to_categorical(i, num_classes=eng_vocab_size)
     ylist.append(encoded)
 y1 = array(ylist)
-trainY = y1.reshape(trainy.shape[0], trainy.shape[1], tamil_vocab_size)
+trainY = y1.reshape(trainy.shape[0], trainy.shape[1], eng_vocab_size)
 
 
 # In[159]:
